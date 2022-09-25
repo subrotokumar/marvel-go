@@ -18,21 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: HomePage.route,
+      initialRoute: SplashScreen.route,
       routes: {
         SplashScreen.route: (_) => const SplashScreen(),
         HomePage.route: (_) => HomePage(),
-        CharacterScreen.route: (_) => CharacterScreen(),
       },
     );
-  }
-}
-
-class MarvelGo extends StatelessWidget {
-  const MarvelGo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
