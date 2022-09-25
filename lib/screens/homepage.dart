@@ -12,119 +12,16 @@ class HomePage extends StatelessWidget {
   static const route = "/home";
   HomePage({super.key});
 
-  PreferredSizeWidget appbar = AppBar(
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
-        Text(
-          'MARVEL',
-          style: TextStyle(
-            color: Colors.red,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-            fontFamily: 'PermanentMarker',
-          ),
-        ),
-        Text(
-          ' GO',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-            fontFamily: 'PermanentMarker',
-          ),
-        ),
-      ],
-    ),
-    centerTitle: true,
-    elevation: 0.0,
-    backgroundColor: Colors.white10,
-    actions: [
-      GestureDetector(
-        onTap: () => Get.to('https://www.google.com'),
-        child: CircleAvatar(
-          radius: 15,
-          child: Image.asset('./assets/images/shield.png'),
-        ),
-      ),
-      const SizedBox(width: 20)
-    ],
-    iconTheme: const IconThemeData(color: Colors.red),
-  );
-
-  var x = Padding(
-    padding: const EdgeInsets.all(20),
-    child: Column(
-      children: [
-        CardView(),
-        // const SizedBox(height: 20),
-        // CardView(),
-        const SizedBox(height: 20),
-        SizedBox(
-          height: /*(MediaQuery.of(context).size.height -
-                  appbar.preferredSize.height -
-                  150) */
-              0.90,
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-            ),
-            itemBuilder: (context, index) {
-              return InkWell(
-                hoverColor: Colors.blue,
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: const Color.fromRGBO(236, 29, 36, 1),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset: Offset(10, 10),
-                      )
-                    ],
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 80,
-                          child: Image.asset(catergories[index].logo),
-                        ),
-                        Text(
-                          catergories[index].title,
-                          style: const TextStyle(
-                            fontFamily: 'PermanentMarker',
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-            itemCount: catergories.length,
-          ),
-        ),
-      ],
-    ),
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: color.AppColor.homePageBackground,
       body: Container(
         padding:
-            const EdgeInsets.only(top: 50, left: 16, right: 16, bottom: 20),
-        child: Column(
-          children: [
+            const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 20),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
             // Appbar
             Row(
               children: [
@@ -284,7 +181,9 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
+            const SizedBox(height: 25),
+            SizedBox(
+              height: 360,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
