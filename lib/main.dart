@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import './screens/screens.dart';
 
 void main() {
@@ -16,12 +15,14 @@ class MyApp extends StatelessWidget {
       title: 'Marvel Go',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       initialRoute: SplashScreen.route,
       routes: {
         SplashScreen.route: (_) => const SplashScreen(),
         HomePage.route: (_) => HomePage(),
+        Character.route: (_) => Character(),
+        Comic.route: (_) => Comic()
       },
     );
   }

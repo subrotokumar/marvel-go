@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:marvelgo/screens/screens.dart';
 
@@ -90,7 +87,7 @@ class HomePage extends StatelessWidget {
             CardView(),
             const SizedBox(height: 5),
             // Wolverine Quote
-            Container(
+            SizedBox(
               height: 180,
               width: double.infinity,
               child: Stack(
@@ -192,8 +189,12 @@ class HomePage extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   return InkWell(
-                    hoverColor: Colors.blue,
-                    onTap: () {},
+                    hoverColor: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, catergories[index].route);
+                    },
                     child: Container(
                       margin: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
