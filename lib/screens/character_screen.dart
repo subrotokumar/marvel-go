@@ -88,7 +88,12 @@ class _CharacterState extends State<Character> {
                   ),
                   const SizedBox(width: 10),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      String name = controller.text;
+                      setState(() {
+                        // call
+                      });
+                    },
                     child: Container(
                       height: 50,
                       width: 50,

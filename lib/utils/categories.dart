@@ -1,4 +1,4 @@
-import 'package:marvelgo/models/Category.dart';
+import 'package:marvelgo/models/category.dart';
 import 'package:marvelgo/screens/screens.dart';
 
 List<Category> catergories = [
