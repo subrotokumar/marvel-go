@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:marvelgo/providers/character_provider.dart';
 import 'package:marvelgo/screens/screens.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/utils.dart';
 import '../utils/app_color.dart' as color;
