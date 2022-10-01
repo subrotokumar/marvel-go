@@ -65,35 +65,35 @@ class _CharacterState extends State<Character> {
               ),
             ),
             const SizedBox(height: 30),
-            //   Row(
-            //     children: [
-            //       const SizedBox(width: 30),
-            //       Text(
-            //         "Characters",
-            //         style: TextStyle(
-            //           fontSize: 25,
-            //           fontWeight: FontWeight.w500,
-            //           color: color.AppColor.secondPageTitleColor,
-            //           //   fontFamily: 'PermanentMarker',
-            //         ),
+            // Row(
+            //   children: [
+            //     const SizedBox(width: 30),
+            //     Text(
+            //       "Characters",
+            //       style: TextStyle(
+            //         fontSize: 25,
+            //         fontWeight: FontWeight.w500,
+            //         color: color.AppColor.secondPageTitleColor,
+            //         //   fontFamily: 'PermanentMarker',
             //       ),
-            //     ],
-            //   ),
-            //   const SizedBox(height: 10),
-            searchBar(
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(height: 10),
+            _SearchBar(
               controller: controller,
               label: 'Character',
             ),
             const SizedBox(height: 40),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
+                padding: const EdgeInsets.only(top: 12, right: 20, left: 20),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius:
                       BorderRadius.only(topRight: Radius.circular(60)),
                 ),
-                child: const FetchResult(),
+                child: const _FetchResult(),
               ),
             ),
           ],
@@ -103,8 +103,8 @@ class _CharacterState extends State<Character> {
   }
 }
 
-class searchBar extends StatelessWidget {
-  const searchBar({
+class _SearchBar extends StatelessWidget {
+  const _SearchBar({
     Key? key,
     required this.controller,
     required this.label,
@@ -124,7 +124,7 @@ class searchBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 labelText: label.toUpperCase(),
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: Colors.white),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -164,8 +164,8 @@ class searchBar extends StatelessWidget {
   }
 }
 
-class FetchResult extends StatelessWidget {
-  const FetchResult({
+class _FetchResult extends StatelessWidget {
+  const _FetchResult({
     Key? key,
   }) : super(key: key);
 
@@ -182,6 +182,7 @@ class FetchResult extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
+                  childAspectRatio: 5 / 6,
                 ),
                 itemBuilder: (context, index) {
                   return InkWell(
@@ -189,33 +190,34 @@ class FetchResult extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     onTap: () {},
                     child: Container(
-                      margin: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
                             color:
-                                color.AppColor.gradientSecond.withOpacity(0.3),
-                            blurRadius: 10,
+                                color.AppColor.gradientSecond.withOpacity(0.1),
+                            blurRadius: 5,
                             offset: const Offset(5, 5),
                           ),
                           BoxShadow(
                             color:
-                                color.AppColor.gradientSecond.withOpacity(0.3),
-                            blurRadius: 10,
+                                color.AppColor.gradientSecond.withOpacity(0.1),
+                            blurRadius: 5,
                             offset: const Offset(-5, -5),
                           ),
                           BoxShadow(
                             color:
-                                color.AppColor.gradientSecond.withOpacity(0.3),
-                            blurRadius: 10,
+                                color.AppColor.gradientSecond.withOpacity(0.1),
+                            blurRadius: 5,
                             offset: const Offset(-5, 5),
                           ),
                           BoxShadow(
                             color:
-                                color.AppColor.gradientSecond.withOpacity(0.3),
-                            blurRadius: 10,
+                                color.AppColor.gradientSecond.withOpacity(0.1),
+                            blurRadius: 5,
                             offset: const Offset(5, -5),
                           ),
                         ],
@@ -231,8 +233,8 @@ class FetchResult extends StatelessWidget {
                                     imageUrl:
                                         provider.Characters[index].thumbnail,
                                     fit: BoxFit.cover,
-                                    width: 160,
-                                    height: 160,
+                                    width: 180,
+                                    height: 180,
                                   ),
                           ),
                           Align(
@@ -243,7 +245,7 @@ class FetchResult extends StatelessWidget {
                                 provider.Characters[index].name,
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(

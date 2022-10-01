@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvelgo/providers/character_provider.dart';
+import 'package:marvelgo/providers/provider.dart';
 import './screens/screens.dart';
 import 'package:provider/provider.dart';
 
@@ -16,18 +16,19 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CharacterProvider()),
+        ChangeNotifierProvider(create: (context) => ComicProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: HomePage.route,
+        initialRoute: Character.route,
         routes: {
           SplashScreen.route: (_) => const SplashScreen(),
           HomePage.route: (_) => HomePage(),
-          Character.route: (_) => Character(),
-          Comic.route: (_) => Comic(),
+          Character.route: (_) => const Character(),
+          Comic.route: (_) => const Comic(),
         },
       ),
     );

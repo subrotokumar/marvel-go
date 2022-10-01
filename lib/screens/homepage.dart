@@ -1,9 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:marvelgo/providers/character_provider.dart';
-import 'package:marvelgo/screens/screens.dart';
-import 'package:provider/provider.dart';
-
 import '../utils/utils.dart';
 import '../utils/app_color.dart' as color;
 
@@ -194,8 +191,15 @@ class HomePage extends StatelessWidget {
                     hoverColor: Colors.white,
                     borderRadius: BorderRadius.circular(20),
                     onTap: () {
-                      Navigator.pushReplacementNamed(
-                          context, catergories[index].route);
+                      if (index < 2) {
+                        Navigator.pushReplacementNamed(
+                            context, catergories[index].route);
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text("Coming soon..."),
+                        ));
+                      }
                     },
                     child: Container(
                       margin: const EdgeInsets.all(12),
@@ -275,37 +279,57 @@ class CardView extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 200,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.red.withOpacity(0.9),
-            Colors.red.withOpacity(0.6),
-          ],
-          begin: Alignment.bottomLeft,
-          end: Alignment.centerRight,
-        ),
-        borderRadius: const BorderRadius.only(
+      decoration: const BoxDecoration(
+        // gradient: LinearGradient(
+        // colors: [
+        //   Colors.red.withOpacity(0.9),
+        //   Colors.red.withOpacity(0.6),
+        // ],
+        //   begin: Alignment.bottomLeft,
+        //   end: Alignment.centerRight,
+        // ),
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
           bottomRight: Radius.circular(10),
           bottomLeft: Radius.circular(10),
           topRight: Radius.circular(80),
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             offset: Offset(5, 10),
             blurRadius: 20,
             color: Colors.grey,
           )
         ],
-        image: const DecorationImage(
-          image: NetworkImage(
-            'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29taWN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-          ),
-          fit: BoxFit.cover,
-          opacity: 0.8,
-        ),
+        // image: const DecorationImage(
+        //   image: NetworkImage(
+        //     'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29taWN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        //   ) ,
+        //   fit: BoxFit.cover,
+        //   opacity: 0.8,
+        // ),
       ),
-      child: Stack(),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              topRight: Radius.circular(80),
+            ),
+            child: Opacity(
+              opacity: 0.8,
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29taWN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
