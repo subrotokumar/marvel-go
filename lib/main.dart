@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: Character.route,
+        initialRoute: SplashScreen.route,
         routes: {
           SplashScreen.route: (_) => const SplashScreen(),
           HomePage.route: (_) => HomePage(),
